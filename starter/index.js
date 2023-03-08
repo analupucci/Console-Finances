@@ -88,15 +88,29 @@ var finances = [
     ];
     
 
-let totalMonths = 0;
-let totalProfitLosses = 0;
-let previousMonthProfitLoss = 0;
-let totalChange = 0;
-let greatestIncrease = {
-  date: '',
-  amount: -Infinity
-};
-let greatestDecrease = {
-  date: '',
-  amount: Infinity
-};
+    let totalMonths = 0;
+    let totalProfitLoss = 0;
+    let changes = [];
+    let greatestIncrease = ['', 0];
+    let greatestDecrease = ['', 0];
+
+    
+    for (let i = 0; i < finances.length; i++) {
+        totalMonths++;
+
+        totalProfitLoss += finances[i][1];
+
+    if (i > 0) {
+        let change = finances[i][1] - finances[i - 1][1];
+        changes.push(change);
+    
+    if (change > greatestIncrease[1]) {
+            greatestIncrease[0] = finances[i][0];
+            greatestIncrease[1] = change;
+        } 
+    else if (change < greatestDecrease[1]) {
+        greatestDecrease[0] = finances[i][0];
+        greatestDecrease[1] = change;
+        }
+        }
+    }
