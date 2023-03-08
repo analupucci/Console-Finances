@@ -114,3 +114,18 @@ var finances = [
         }
         }
     }
+
+let totalChange = 0;
+
+for (let i = 0; i < changes.length; i++) {
+  totalChange += changes[i];
+}
+let averageChange = totalChange / changes.length;
+
+console.log('Financial Analysis');
+console.log('----------------------------');
+console.log(`Total Months: ${totalMonths}`);
+console.log(`Total: $${totalProfitLoss}`);
+console.log(`Average  Change: $${averageChange.toFixed(2)}`);
+console.log(`Greatest Increase in Profits: ${greatestIncrease[0]} ($${greatestIncrease[1]})`);
+console.log(`Greatest Decrease in Profits: ${greatestDecrease[0]} ($${greatestDecrease[1]})`);
