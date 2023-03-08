@@ -87,23 +87,26 @@ var finances = [
     ['Feb-2017', 671099]
     ];
     
-
+    // Initialize variables
     let totalMonths = 0;
     let totalProfitLoss = 0;
     let changes = [];
     let greatestIncrease = ['', 0];
     let greatestDecrease = ['', 0];
 
-    
+    // Loop through the dataset and calculate the required metrics
     for (let i = 0; i < finances.length; i++) {
         totalMonths++;
 
+        // Add to the net total amount of Profit/Losses
         totalProfitLoss += finances[i][1];
-
+    
+    // If this is not the first row, calculate the change in Profit/Losses
     if (i > 0) {
         let change = finances[i][1] - finances[i - 1][1];
         changes.push(change);
-    
+
+    // Check if this is the greatest increase or decrease in profits
     if (change > greatestIncrease[1]) {
             greatestIncrease[0] = finances[i][0];
             greatestIncrease[1] = change;
@@ -115,6 +118,7 @@ var finances = [
         }
     }
 
+// Calculate the average change in Profit/Losses
 let totalChange = 0;
 
 for (let i = 0; i < changes.length; i++) {
@@ -122,6 +126,7 @@ for (let i = 0; i < changes.length; i++) {
 }
 let averageChange = totalChange / changes.length;
 
+// Print the results to the console
 console.log('Financial Analysis');
 console.log('----------------------------');
 console.log(`Total Months: ${totalMonths}`);
